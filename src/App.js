@@ -7,6 +7,12 @@ class App extends React.Component {
 
   state = {
     weaponSkill: [
+      {skillName: "Big 2 SK 15",
+      count: 0,
+      value: 12},
+      {skillName: "Big SK 20",
+      count: 0,
+      value: 11},
       {skillName: "Big SK 15",
       count: 0,
       value: 10},
@@ -46,10 +52,10 @@ class App extends React.Component {
     this.setState({weaponSkill: weaponSkills})
   }
 
-  handleOnChange(e) {
-    console.log('selected option', e.target.value);
-    this.setState({ selectedOption: e.target.value});
+  handleOnChange = (e) => {
+      this.setState({ selectedOption: e.target.value});
   }
+
   render() {
     var weaponSkills = [];
     for (let i = 0; i < this.state.weaponSkill.length; i++) {
@@ -57,23 +63,28 @@ class App extends React.Component {
     }
 
     
-      var baseCrit = 0;
-      for (let i = 0; i < this.state.weaponSkill.length; i++) {
-        baseCrit += this.state.weaponSkill[i].count * this.state.weaponSkill[i].value;
-      }
-      
-
-      var critChance = (this.state.selectedOption) ? this.state.selectedOption * baseCrit : 0;
+    var baseCrit = 0;
+    for (let i = 0; i < this.state.weaponSkill.length; i++) {
+      baseCrit += this.state.weaponSkill[i].count * this.state.weaponSkill[i].value;
+    }
     
+
+    var critChance = (this.state.selectedOption) ? this.state.selectedOption * baseCrit : 0;
+  
 
     return (
       <div className="App">
-        <h2>GBF Crit Calculator</h2>
+        <h2>GBF Crit Calculator Test</h2>
         {weaponSkills}
-        <Summons click={(e) => this.handleOnChange(e)} selected={this.state.selectedOption} ></Summons>
+        <Summons click={this.handleOnChange} selected={this.state.selectedOption} ></Summons>
         <br/>
         Crit chance : {critChance}
+        <br/>
+        <br/>
+
+        Fuck Tootniggers
       </div>
+      
     );
   }
 
