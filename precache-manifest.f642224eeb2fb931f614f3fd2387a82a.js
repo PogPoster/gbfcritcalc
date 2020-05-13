@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0574ca51e8ce4b39d6de2d623c81f122",
+    "revision": "e69b15d72f0c240059541e5ccf107b29",
     "url": "/gbfcritcalc/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gbfcritcalc/static/css/main.b5897f18.chunk.css"
   },
   {
-    "revision": "78edbddba514069a819f",
-    "url": "/gbfcritcalc/static/js/2.dbce9a62.chunk.js"
+    "revision": "27d63795fb84aaf827a4",
+    "url": "/gbfcritcalc/static/js/2.903893cd.chunk.js"
   },
   {
     "revision": "b0b8dc8abb88f8c1d562",
