@@ -4,7 +4,7 @@ export class Summons extends Component {
     render() {
         return (
             <div>
-                <input type="radio" name="summons" value={4}  onChange={this.props.click}/> 2 Primals ULB<br/>
+                <input type="radio" name="summons" value={{"primal":4}}  onChange={this.props.click}/> 2 Primals ULB<br/>
                 <input type="radio" name="summons" value={3.9}  onChange={this.props.click}/> 1 Primal ULB/1 Primal FLB<br/>
                 <input type="radio" name="summons" value={3.8}  onChange={this.props.click}/> 2 Primals FLB<br/>
                 <input type="radio" name="summons" value={2.5}  onChange={this.props.click}/> 1 Primal ULB<br/>
