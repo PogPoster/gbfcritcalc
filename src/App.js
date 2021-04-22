@@ -122,10 +122,16 @@ class App extends React.Component {
       count: 0,
       mValue: 0,
       pValue: 0,
-      other: 20}
+      other: 20},
+      {skillName: "Sephira Tek (Arcarum Only)",
+      count: 0,
+      mValue: 0,
+      pValue: 0,
+      other: 30}
+
     ],
 
-    dataBoosted: [
+    dataPrimal: [
       {skillName: "Big 2 SK 15",
       count: 0,
       da: 9,
@@ -183,7 +189,7 @@ class App extends React.Component {
       da: 3.5,
       ta: 0},
     ],
-    dataUnboosted: [
+    dataMagna: [
       {skillName: "Big 2 SK 15",
       count: 0,
       da: 9,
@@ -339,29 +345,29 @@ class App extends React.Component {
 
 
 
-  // boostedplusClick = (e) => {
-  //   var weaponSkills = this.state.dataBoosted.slice()
-  //   weaponSkills[e].count = weaponSkills[e].count + 1
-  //   this.setState({dataBoosted: weaponSkills})
-  // }
+  boostedplusClick = (e) => {
+    var weaponSkills = this.state.dataPrimal.slice()
+    weaponSkills[e].count = weaponSkills[e].count + 1
+    this.setState({dataBoosted: weaponSkills})
+  }
 
-  // boostedminusClick = (e) => {
-  //   var weaponSkills = this.state.dataBoosted.slice()
-  //   weaponSkills[e].count = Math.max(weaponSkills[e].count - 1, 0)
-  //   this.setState({dataBoosted: weaponSkills})
-  // }
+  boostedminusClick = (e) => {
+    var weaponSkills = this.state.dataPrimal.slice()
+    weaponSkills[e].count = Math.max(weaponSkills[e].count - 1, 0)
+    this.setState({dataBoosted: weaponSkills})
+  }
 
-  // unboostedplusClick = (e) => {
-  //   var weaponSkills = this.state.dataUnboosted.slice()
-  //   weaponSkills[e].count = weaponSkills[e].count + 1
-  //   this.setState({dataUnboosted: weaponSkills})
-  // }
+  unboostedplusClick = (e) => {
+    var weaponSkills = this.state.dataMagna.slice()
+    weaponSkills[e].count = weaponSkills[e].count + 1
+    this.setState({dataMagna: weaponSkills})
+  }
 
-  // unboostedminusClick = (e) => {
-  //   var weaponSkills = this.state.dataUnboosted.slice()
-  //   weaponSkills[e].count = Math.max(weaponSkills[e].count - 1, 0)
-  //   this.setState({dataUnboosted: weaponSkills})
-  // }
+  unboostedminusClick = (e) => {
+    var weaponSkills = this.state.dataMagna.slice()
+    weaponSkills[e].count = Math.max(weaponSkills[e].count - 1, 0)
+    this.setState({dataMagna: weaponSkills})
+  }
 
   handleOnChange = (e) => {
       console.log(JSON.stringify(e.target.value.primal))
@@ -396,11 +402,11 @@ class App extends React.Component {
     )
 
 
-    const dataBoosted = this.state.dataBoosted.map((weapon, index)=> 
+    const primalData = this.state.dataPrimal.map((weapon, index)=> 
       <WeaponSkill name={weapon.skillName} count={weapon.count} key={"dataBoosted"+index} index={index} click={this.boostedplusClick} minusClick={this.boostedminusClick}></WeaponSkill>
     )
 
-    const dataUnboosted = this.state.dataUnboosted.map((weapon, index)=> 
+    const magnaData = this.state.dataMagna.map((weapon, index)=> 
       <WeaponSkill name={weapon.skillName} count={weapon.count} key={"dataUnboosted"+index} index={index} click={this.unboostedplusClick} minusClick={this.unboostedminusClick}></WeaponSkill>
     )
 
@@ -414,11 +420,11 @@ class App extends React.Component {
     const baseOtherCrit = this.state.weaponSkillOther.reduce((accumulator, weapon)=> parseFloat(accumulator) + (weapon.count * weapon.other), 0)
 
 
-    // const boostedDa = Math.min(this.state.dataBoosted.reduce((accumulator, weapon)=> parseFloat(accumulator) + (weapon.count * weapon.da), 0) * (this.state.selectedOption), 50)
-    // const boostedTa = Math.min(this.state.dataBoosted.reduce((accumulator, weapon)=> parseFloat(accumulator) + (weapon.count * weapon.ta), 0) * (this.state.selectedOption), 50)
+    const primalDa = Math.min(this.state.dataPrimal.reduce((accumulator, weapon)=> parseFloat(accumulator) + (weapon.count * weapon.da), 0) * (this.state.primalValue), 50)
+    const primalTa = Math.min(this.state.dataPrimal.reduce((accumulator, weapon)=> parseFloat(accumulator) + (weapon.count * weapon.ta), 0) * (this.state.primalValue), 50)
 
-    // const unboostedDa = Math.min(this.state.dataUnboosted.reduce((accumulator, weapon)=> parseFloat(accumulator) + (weapon.count * weapon.da), 0) , 50)
-    // const unboostedTa = Math.min(this.state.dataUnboosted.reduce((accumulator, weapon)=> parseFloat(accumulator) + (weapon.count * weapon.ta), 0) , 50)
+    const magnaDa = Math.min(this.state.dataMagna.reduce((accumulator, weapon)=> parseFloat(accumulator) + (weapon.count * weapon.da), 0) * (this.state.magnaValue) , 50)
+    const magnaTa = Math.min(this.state.dataMagna.reduce((accumulator, weapon)=> parseFloat(accumulator) + (weapon.count * weapon.ta), 0) * (this.state.magnaValue), 50)
 
     return (
       <div className="App" style={{marginLeft:"12px"}}>
@@ -475,24 +481,45 @@ class App extends React.Component {
         <br/>
         <br/>
 		    <br/>
+
+
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <table>
+                {primalData}
+
+              </table>
+
+            </div>
+            <div class="col-sm">
+              <table>
+              { magnaData}
+
+              </table>
+
+            </div>
+            <div class="col-sm">
+           </div>
+          </div>
+        </div>
+
         {/* Main type Data (Primal data skills if you are primal etc)
         <table>
-          {dataBoosted}
         </table>
 		    <br/>
         Other type Data (this would be the opposite of your summon type, e.g primal data if you are running magna)
         <table>
-          {dataUnboosted}
         </table>
-		    <br/>
-        Total Data DA/TA <br/>
-        Main Type: {boostedDa.toFixed(2)}/{boostedTa.toFixed(2)} 
-        <br/>
-        Off Type: {unboostedDa.toFixed(2)}/{unboostedTa.toFixed(2)}
-		    <br/>
-        Combined: {(boostedDa + unboostedDa).toFixed(2)}/{(boostedTa + unboostedTa).toFixed(2)}
-		    <br/>
 		    <br/> */}
+        Total Data DA/TA <br/>
+        Primal: {primalDa.toFixed(2)}/{primalTa.toFixed(2)} 
+        <br/>
+        Magna: {magnaDa.toFixed(2)}/{magnaTa.toFixed(2)}
+		    <br/>
+        Combined: {(primalDa + magnaDa).toFixed(2)}/{(primalTa + magnaTa).toFixed(2)}
+		    <br/>
+		    <br/>
 
 
 
