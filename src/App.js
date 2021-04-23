@@ -487,6 +487,7 @@ class App extends React.Component {
           <div class="row">
             <div class="col-sm">
               <table>
+                <h3>Primal DATA </h3>
                 {primalData}
 
               </table>
@@ -494,6 +495,8 @@ class App extends React.Component {
             </div>
             <div class="col-sm">
               <table>
+              <h3>Magna DATA </h3>
+
               { magnaData}
 
               </table>
