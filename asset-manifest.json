@@ -1,17 +1,25 @@
 {
   "files": {
-    "main.css": "/gbfcritcalc/static/css/main.f7a977eb.chunk.css",
-    "main.js": "/gbfcritcalc/static/js/main.f0d81cf6.chunk.js",
-    "main.js.map": "/gbfcritcalc/static/js/main.f0d81cf6.chunk.js.map",
-    "runtime~main.js": "/gbfcritcalc/static/js/runtime~main.74485640.js",
-    "runtime~main.js.map": "/gbfcritcalc/static/js/runtime~main.74485640.js.map",
-    "static/css/2.c724ebb2.chunk.css": "/gbfcritcalc/static/css/2.c724ebb2.chunk.css",
-    "static/js/2.6927bbc3.chunk.js": "/gbfcritcalc/static/js/2.6927bbc3.chunk.js",
-    "static/js/2.6927bbc3.chunk.js.map": "/gbfcritcalc/static/js/2.6927bbc3.chunk.js.map",
+    "main.css": "/gbfcritcalc/static/css/main.d5be1a14.chunk.css",
+    "main.js": "/gbfcritcalc/static/js/main.b763d361.chunk.js",
+    "main.js.map": "/gbfcritcalc/static/js/main.b763d361.chunk.js.map",
+    "runtime-main.js": "/gbfcritcalc/static/js/runtime-main.304b82aa.js",
+    "runtime-main.js.map": "/gbfcritcalc/static/js/runtime-main.304b82aa.js.map",
+    "static/css/2.ff7a0386.chunk.css": "/gbfcritcalc/static/css/2.ff7a0386.chunk.css",
+    "static/js/2.2b6ec99b.chunk.js": "/gbfcritcalc/static/js/2.2b6ec99b.chunk.js",
+    "static/js/2.2b6ec99b.chunk.js.map": "/gbfcritcalc/static/js/2.2b6ec99b.chunk.js.map",
     "index.html": "/gbfcritcalc/index.html",
-    "precache-manifest.f6b777d7da953902ae34e19610476637.js": "/gbfcritcalc/precache-manifest.f6b777d7da953902ae34e19610476637.js",
+    "precache-manifest.daa3898deb46d14abbb0a10d8bfcdbbb.js": "/gbfcritcalc/precache-manifest.daa3898deb46d14abbb0a10d8bfcdbbb.js",
     "service-worker.js": "/gbfcritcalc/service-worker.js",
-    "static/css/2.c724ebb2.chunk.css.map": "/gbfcritcalc/static/css/2.c724ebb2.chunk.css.map",
-    "static/css/main.f7a977eb.chunk.css.map": "/gbfcritcalc/static/css/main.f7a977eb.chunk.css.map"
-  }
+    "static/css/2.ff7a0386.chunk.css.map": "/gbfcritcalc/static/css/2.ff7a0386.chunk.css.map",
+    "static/css/main.d5be1a14.chunk.css.map": "/gbfcritcalc/static/css/main.d5be1a14.chunk.css.map",
+    "static/js/2.2b6ec99b.chunk.js.LICENSE.txt": "/gbfcritcalc/static/js/2.2b6ec99b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.304b82aa.js",
+    "static/css/2.ff7a0386.chunk.css",
+    "static/js/2.2b6ec99b.chunk.js",
+    "static/css/main.d5be1a14.chunk.css",
+    "static/js/main.b763d361.chunk.js"
+  ]
 }
