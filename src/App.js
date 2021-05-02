@@ -10,6 +10,7 @@ class App extends React.Component {
     this.customRef = React.createRef();
     this.magnaRef = React.createRef();
     this.primalRef = React.createRef();
+    this.sixDragonsRef = React.createRef();
 
   }
   state = {
@@ -298,7 +299,8 @@ class App extends React.Component {
     ],
 
     primalValue: 1,
-    magnaValue: 1
+    magnaValue: 1,
+    primalSubValue: 0
   }
   
 
@@ -412,7 +414,7 @@ class App extends React.Component {
 
 
     const basePrimalCrit = this.state.weaponSkillPrimal.reduce((accumulator, weapon)=> parseFloat(accumulator) + (weapon.count * weapon.pValue), 0)
-    const primalCritChance = (this.state.primalValue) ? this.state.primalValue * basePrimalCrit : 0;
+    const primalCritChance = (this.state.primalValue) ? (this.state.primalValue + this.state.primalSubValue )* basePrimalCrit : 0;
   
     const baseMagnaCrit = this.state.weaponSkillMagna.reduce((accumulator, weapon)=> parseFloat(accumulator) + (weapon.count * weapon.mValue), 0)
     const magnaCritChance = (this.state.magnaValue) ? this.state.magnaValue * baseMagnaCrit : 0;
@@ -420,8 +422,8 @@ class App extends React.Component {
     const baseOtherCrit = this.state.weaponSkillOther.reduce((accumulator, weapon)=> parseFloat(accumulator) + (weapon.count * weapon.other), 0)
 
 
-    const primalDa = Math.min(this.state.dataPrimal.reduce((accumulator, weapon)=> parseFloat(accumulator) + (weapon.count * weapon.da), 0) * (this.state.primalValue), 50)
-    const primalTa = Math.min(this.state.dataPrimal.reduce((accumulator, weapon)=> parseFloat(accumulator) + (weapon.count * weapon.ta), 0) * (this.state.primalValue), 50)
+    const primalDa = Math.min(this.state.dataPrimal.reduce((accumulator, weapon)=> parseFloat(accumulator) + (weapon.count * weapon.da), 0) * (this.state.primalValue + this.state.primalSubValue), 50)
+    const primalTa = Math.min(this.state.dataPrimal.reduce((accumulator, weapon)=> parseFloat(accumulator) + (weapon.count * weapon.ta), 0) * (this.state.primalValue + this.state.primalSubValue), 50)
 
     const magnaDa = Math.min(this.state.dataMagna.reduce((accumulator, weapon)=> parseFloat(accumulator) + (weapon.count * weapon.da), 0) * (this.state.magnaValue) , 50)
     const magnaTa = Math.min(this.state.dataMagna.reduce((accumulator, weapon)=> parseFloat(accumulator) + (weapon.count * weapon.ta), 0) * (this.state.magnaValue), 50)
@@ -456,6 +458,13 @@ class App extends React.Component {
           <div class="row">
             <div class="col-sm">
                 {summonsPrimal}
+                <div class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" id="customSwitch1" ref={this.sixDragonsRef}  onChange={()=> {
+                    this.sixDragonsRef.current.checked ? this.setState({primalSubValue: 0.2}) : this.setState({primalSubValue: 0})
+                  }}/>
+                  <label class="custom-control-label" for="customSwitch1"> 6 Dragons MLB subaura</label>
+                </div>
+
             </div>
             <div class="col-sm">
                 {summonsMagna}
@@ -463,17 +472,19 @@ class App extends React.Component {
             <div class="col-sm">
                 {summonsOther}
                 <> <input  ref={this.customRef} type="radio" name="summons" onChange={()=> this.setState({primalValue: this.primalRef.current.value/100 + 1, magnaValue: this.magnaRef.current.value/100 + 1})}/> Custom Multipliers
-                <br/> Primal <input ref={this.primalRef} placeholder={"150"} style={{width: "100px"} }></input> 
-                <br/> Magna <input ref={this.magnaRef} placeholder={"140"} style={{width: "100px"}} ></input> 
+                <br/> Primal <input ref={this.primalRef} placeholder={"150"} style={{width: "100px"}}  onChange={()=>this.customRef?.current?.checked && this.setState({primalValue: this.primalRef.current.value/100 + 1, magnaValue: this.magnaRef.current.value/100 + 1})}></input> 
+                <br/> Magna <input ref={this.magnaRef} placeholder={"140"} style={{width: "100px"}} onChange={()=>this.customRef?.current?.checked && this.setState({primalValue: this.primalRef.current.value/100 + 1, magnaValue: this.magnaRef.current.value/100 + 1})}></input> 
                 
                 </> 
            </div>
           </div>
         </div>
 
+
+
         <br/>
 
-        Current Summon Multipliers: Primal: {(this.state.primalValue*100).toFixed(2)}% / Magna: {(this.state.magnaValue*100).toFixed(2)}% 
+        Current Summon Multipliers: Primal: {(this.state.primalValue*100 + this.state.primalSubValue*100).toFixed(2)}% / Magna: {(this.state.magnaValue*100).toFixed(2)}% 
         <br/>
         <br/>
 
